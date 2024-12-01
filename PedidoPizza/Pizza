@@ -1,0 +1,80 @@
+package PedidoPizza;
+
+import FormaPizza.Forma;
+
+public class Pizza {
+    private Forma forma;
+    private String sabor1;
+    private String sabor2; // Segundo sabor opcional
+    private double precoPorCm2;
+    private double area;
+    private double preco;
+
+    public Pizza(Forma forma, String sabor1, String sabor2, double precoPorCm2) {
+        this.forma = forma;
+        this.sabor1 = sabor1;
+        this.sabor2 = sabor2 != null ? sabor2 : "";
+        this.precoPorCm2 = precoPorCm2;
+        this.area = forma.calcularArea();
+        calcularPreco();
+    }
+
+    private void calcularPreco() {
+        this.preco = area * precoPorCm2;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    @Override
+    public String toString() {
+        return "Pizza de forma " + forma.getClass().getSimpleName() + 
+               " com sabores: " + sabor1 + (sabor2.isEmpty() ? "" : " e " + sabor2) + 
+               " - Preço: R$ " + preco;
+    }
+}
+package PedidoPizza;
+
+import FormaPizza.Forma;
+
+public class Pizza {
+    private Forma forma;
+    private String sabor1;
+    private String sabor2; // Segundo sabor opcional
+    private double precoPorCm2;
+    private double area;
+    private double preco;
+
+    public Pizza(Forma forma, String sabor1, String sabor2, double precoPorCm2) {
+        this.forma = forma;
+        this.sabor1 = sabor1;
+        this.sabor2 = sabor2 != null ? sabor2 : "";
+        this.precoPorCm2 = precoPorCm2;
+        this.area = forma.calcularArea();
+        calcularPreco();
+    }
+
+    private void calcularPreco() {
+        this.preco = area * precoPorCm2;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    @Override
+    public String toString() {
+        return "Pizza de forma " + forma.getClass().getSimpleName() + 
+               " com sabores: " + sabor1 + (sabor2.isEmpty() ? "" : " e " + sabor2) + 
+               " - Preço: R$ " + preco;
+    }
+}
