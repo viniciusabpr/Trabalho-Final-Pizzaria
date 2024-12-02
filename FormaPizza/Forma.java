@@ -5,7 +5,7 @@ import SaborPizza.*;
 
 public abstract class Forma {
     
-    public abstract void adicionaSabor(Sabor sabor);
+    public abstract boolean adicionaSabor(Sabor sabor);
     
     public abstract void apagarSabor(Sabor sabor);
     

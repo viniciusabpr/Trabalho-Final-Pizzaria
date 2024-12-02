@@ -51,8 +51,20 @@ public class Triangulo extends Forma {
     }
     
     @Override
-    public void adicionaSabor(Sabor sabor){
-        saboresDisponiveis.add(sabor);
+    public boolean adicionaSabor(Sabor sabor){
+        boolean saborExiste = false;
+        if (saboresDisponiveis.isEmpty()) {
+            saboresDisponiveis.add(sabor);
+        } else {
+            for (Sabor saborBusca : saboresDisponiveis){
+                if (saborBusca.equals(sabor)){
+                    saborExiste = true;
+                }else{
+                    saboresDisponiveis.add(sabor);
+                }
+            }
+        }
+        return saborExiste;
     }
     
     @Override

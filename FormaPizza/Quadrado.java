@@ -51,8 +51,9 @@ public class Quadrado extends Forma{
     }
     
     @Override
-    public void adicionaSabor(Sabor sabor){
+    public boolean adicionaSabor(Sabor sabor){
         saboresDisponiveis.add(sabor);
+        return true;
     }
     
     @Override
