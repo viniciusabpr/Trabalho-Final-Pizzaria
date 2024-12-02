@@ -1,16 +1,19 @@
 package FormaPizza;
 
+import java.util.ArrayList;
+import SaborPizza.*;
+
 public abstract class Forma {
     
-    public abstract boolean adicionaSabor(String sabor);
+    public abstract void adicionaSabor(Sabor sabor);
     
-    public abstract boolean apagarSabor(String sabor);
+    public abstract void apagarSabor(Sabor sabor);
     
-    public abstract String[] getSabores();
+    public abstract ArrayList<Sabor> getSabores();
     
-    public abstract void setSabor(String sabor);
+    public abstract boolean setSabor(Sabor sabor);
     
-    public abstract String getSabor();
+    public abstract Sabor[] getSabor();
     
     public abstract double calculaArea(double lado);
 

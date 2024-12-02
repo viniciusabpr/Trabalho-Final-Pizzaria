@@ -2,13 +2,16 @@ package PedidoPizza;
 
 //Janela para escolher o tamanho e os sabores de pizza
 
+import SaborPizza.*;
 import FormaPizza.Forma;
+import SaborPizza.Sabor;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class EscolheSabor{
-    public EscolheSabor(Forma forma){
+    public EscolheSabor(Forma forma, CategoriaSabor categoria){
         
         //Define a área da nova janela
         JFrame escolherSabor = new JFrame("Escolher o sabor");
@@ -34,18 +37,18 @@ public class EscolheSabor{
         
         //Cria os botões para serem inseridos caso existam sabores
         
-        String[] saboresDisponiveis = forma.getSabores(); 
-        JButton[] botoesSabores = new JButton[saboresDisponiveis.length];
+        ArrayList<Sabor> saboresDisponiveis = forma.getSabores(); 
+        JButton[] botoesSabores = new JButton[saboresDisponiveis.size()];
         boolean semSabor = true;
 
-        for (int i = 0; i < saboresDisponiveis.length; i++) {
+        for (int i = 0; i < saboresDisponiveis.size(); i++) {
             int indice = i; 
-            botoesSabores[i] = new JButton(saboresDisponiveis[i]); 
+            botoesSabores[i] = new JButton(saboresDisponiveis.get(i).getNome()); 
 
-            if (saboresDisponiveis[i] != null){
+            if (saboresDisponiveis != null){
                 // Adiciona o listener ao botão
                 botoesSabores[i].addActionListener(e -> {
-                    forma.setSabor(saboresDisponiveis[indice]); 
+                    forma.setSabor(saboresDisponiveis.get(indice)); 
                     for (int j = 0; j < botoesSabores.length; j++) {
                         if (j == indice) {
                             botoesSabores[j].setBackground(Color.GREEN); 

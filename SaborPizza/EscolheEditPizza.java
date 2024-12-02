@@ -5,12 +5,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EscolheEditPizza{
-    public static void main(String[] args){
-        Forma forma = new Triangulo();
+    public EscolheEditPizza(){
         
         //Cria a tela
         JFrame cadastrarSabor = new JFrame();
-        cadastrarSabor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         cadastrarSabor.setSize(400, 400);
         cadastrarSabor.setLayout(new BorderLayout());
         
@@ -27,6 +25,7 @@ public class EscolheEditPizza{
         JButton botao1 = new JButton ("Triangular");
         JButton botao2 = new JButton ("Quadrada");
         JButton botao3 = new JButton ("Circular");
+        JButton botaoVoltar = new JButton("Voltar");
         
         botao1.setBounds(130, 50, 150, 40);
         botao2.setBounds(130, 110, 150, 40);
@@ -39,12 +38,28 @@ public class EscolheEditPizza{
         //Listeners
         
         botao1.addActionListener(e -> {
+            Forma forma = new Triangulo();
             new EditSabor(forma);
+        });
+        
+        botao2.addActionListener(e -> {
+            Forma forma = new Quadrado();
+            new EditSabor(forma);
+        });
+        
+        botao3.addActionListener(e -> {
+            Forma forma = new Circunferencia();
+            new EditSabor(forma);
+        });
+        
+        botaoVoltar.addActionListener(e -> {
+            cadastrarSabor.dispose();
         });
         
         //Adiciona os elementos à tela
         cadastrarSabor.add(labelPanel, BorderLayout.NORTH);
         cadastrarSabor.add(buttonPanel, BorderLayout.CENTER);
+        cadastrarSabor.add(botaoVoltar, BorderLayout.SOUTH);
         
         cadastrarSabor.setVisible(true);
     }

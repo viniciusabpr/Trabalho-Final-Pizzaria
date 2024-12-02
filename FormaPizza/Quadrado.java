@@ -2,27 +2,39 @@ package FormaPizza;
 
 //Area = lado * lado
 
+import SaborPizza.Sabor;
+import java.util.ArrayList;
+
+
 public class Quadrado extends Forma{
     private double lado;
-    private String[] sabores = new String[2];
-    private String sabor;
+    ArrayList<Sabor> saboresDisponiveis = new ArrayList<>();
+    private Sabor[] saborEscolhido = new Sabor[2];
     
+    public Quadrado(){};
     
-    public Quadrado (double lado){
+    public double defineLado (double lado){
         if (lado < 10 || lado > 40){
             throw new IllegalArgumentException("Valor invalido para o lado!");
         }
-        this.lado = lado;
+        return lado;
     }
     
     @Override
-    public void setSabor(String sabor){
-        this.sabor = sabor;
+    public boolean setSabor(Sabor sabor){
+        boolean semSabor = true;
+        for (int i = 0; i < 2; i++){
+            if(saborEscolhido[i] == null){
+                saborEscolhido[i] = sabor;
+                semSabor = false;
+            }
+        }
+        return semSabor;
     }
     
     @Override
-    public String getSabor(){
-        return sabor;
+    public Sabor[] getSabor(){
+        return saborEscolhido;
     }
     
     @Override
@@ -39,28 +51,22 @@ public class Quadrado extends Forma{
     }
     
     @Override
-    public boolean adicionaSabor(String sabor){
-        for (int i = 0; i < sabores.length; i++){
-            if (sabores[i] == null){
-                sabores[i] = sabor;
-                return true;
-            }
-        }
-        return false;
+    public void adicionaSabor(Sabor sabor){
+        saboresDisponiveis.add(sabor);
     }
     
     @Override
-    public boolean apagarSabor(String sabor){
-        for (int i = 0; i <sabores.length; i++){
-            if (sabor.equalsIgnoreCase(sabores[i])){
-                return true;
-            }
+    public void apagarSabor(Sabor sabor){
+        if (saboresDisponiveis.contains(sabor)) {
+            saboresDisponiveis.remove(sabor);
+        } else {
+            // Caso o sabor não seja encontrado, lança uma exceção
+            throw new IllegalArgumentException("O sabor especificado não foi encontrado na lista.");
         }
-        return false;
     }
     
     @Override
-    public String[] getSabores(){
-        return sabores;
+    public ArrayList<Sabor> getSabores(){
+        return saboresDisponiveis;
     }
 }
